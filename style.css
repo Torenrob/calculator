@@ -1,0 +1,140 @@
+* {
+	box-sizing: border-box;
+	margin: 0rem;
+	padding: 0rem;
+}
+
+body {
+	background-color: rgb(15, 4, 36);
+	display: grid;
+	grid-template-columns: 1fr 1.5fr 1fr;
+	grid-template-rows: 1.5fr 4fr 1.5fr;
+	height: 60rem;
+	grid-template-areas:
+		". . ."
+		". calc ."
+		"foot foot foot";
+}
+
+#calc {
+	grid-area: calc;
+	background-color: rgb(49, 18, 85);
+	border-radius: 2.5rem;
+	border: solid 2.5px rgba(0, 0, 0, 0.541);
+	box-shadow: -25px 30px 30px 2px rgba(76, 231, 166, 0.233);
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr 2fr;
+	grid-template-areas:
+		"display"
+		"buttons";
+}
+
+#calcDisplay {
+	grid-area: display;
+	background-color: rgba(90, 88, 88, 0.384);
+	border-top-left-radius: 1.25rem;
+	border-top-right-radius: 1.25rem;
+	height: 75%;
+	margin-top: 5%;
+	width: 90%;
+	position: relative;
+	align-self: center;
+	justify-self: center;
+	border: solid 2px rgb(15, 4, 36);
+}
+
+#calcBtns {
+	grid-area: buttons;
+	display: grid;
+	margin-bottom: 5%;
+	width: 90%;
+	justify-self: center;
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+	grid-template-areas:
+		"c7 c8 c9 equal divide "
+		"c4 c5 c6 mult perc"
+		"c1 c2 c3 minus posNeg"
+		"clear dec c0 plus sqrt";
+}
+
+#c0 {
+	grid-area: c0;
+}
+#c1 {
+	grid-area: c1;
+}
+#c2 {
+	grid-area: c2;
+}
+#c3 {
+	grid-area: c3;
+}
+#c4 {
+	grid-area: c4;
+}
+#c5 {
+	grid-area: c5;
+}
+#c6 {
+	grid-area: c6;
+}
+#c7 {
+	grid-area: c7;
+}
+#c8 {
+	grid-area: c8;
+}
+#c9 {
+	grid-area: c9;
+}
+#decimal {
+	grid-area: dec;
+}
+#equal {
+	grid-area: equal;
+}
+#plus {
+	grid-area: plus;
+}
+#sub {
+	grid-area: minus;
+}
+#mul {
+	grid-area: mult;
+}
+#divide {
+	grid-area: divide;
+}
+#sqrt {
+	grid-area: sqrt;
+	border-bottom-right-radius: 1.25rem;
+}
+#perc {
+	grid-area: perc;
+}
+#posNeg {
+	grid-area: posNeg;
+}
+#clear {
+	grid-area: clear;
+	border-bottom-left-radius: 1.25rem;
+}
+
+.btns {
+	background-color: rgb(35, 13, 61);
+	color: rgba(76, 231, 167, 0.486);
+	font-size: 25px;
+	font-weight: bold;
+	border: solid 1px rgb(15, 4, 36);
+}
+
+.btns:active {
+	background-color: rgba(35, 13, 61, 0.425);
+	border: solid 4px rgba(15, 4, 36, 0.534);
+}
+
+footer {
+	grid-area: foot;
+}

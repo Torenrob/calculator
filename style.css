@@ -21,7 +21,7 @@ body {
 	background-color: rgb(49, 18, 85);
 	border-radius: 2.5rem;
 	border: solid 2.5px rgba(0, 0, 0, 0.541);
-	box-shadow: -25px 30px 30px 2px rgba(76, 231, 166, 0.233);
+	box-shadow: -20px 25px 30px 2px rgba(76, 231, 166, 0.233);
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: 1fr 2fr;
@@ -32,7 +32,7 @@ body {
 
 #calcDisplay {
 	grid-area: display;
-	background-color: rgba(90, 88, 88, 0.384);
+	background-color: rgba(170, 169, 169, 0.384);
 	border-top-left-radius: 1.25rem;
 	border-top-right-radius: 1.25rem;
 	height: 75%;
@@ -42,6 +42,16 @@ body {
 	align-self: center;
 	justify-self: center;
 	border: solid 2px rgb(15, 4, 36);
+	border-top: solid 5px rgba(0, 0, 0, 0.712);
+	border-left: solid 5px rgba(0, 0, 0, 0.712);
+	border-right: solid 5px rgba(0, 0, 0, 0.712);
+	text-align: right;
+	padding-right: 1.25rem;
+	font-size: 1.5rem;
+}
+
+#topDisplay {
+	padding-top: 0.5rem;
 }
 
 #calcBtns {
@@ -61,65 +71,97 @@ body {
 
 #c0 {
 	grid-area: c0;
+	border-bottom: solid 5px rgba(0, 0, 0, 0.541);
 }
+
 #c1 {
 	grid-area: c1;
+	border-left: solid 5px rgba(0, 0, 0, 0.541);
 }
+
 #c2 {
 	grid-area: c2;
 }
+
 #c3 {
 	grid-area: c3;
 }
+
 #c4 {
 	grid-area: c4;
+	border-left: solid 5px rgba(0, 0, 0, 0.541);
 }
+
 #c5 {
 	grid-area: c5;
 }
+
 #c6 {
 	grid-area: c6;
 }
+
 #c7 {
 	grid-area: c7;
+	border-left: solid 5px rgba(0, 0, 0, 0.541);
 }
+
 #c8 {
 	grid-area: c8;
 }
+
 #c9 {
 	grid-area: c9;
 }
+
 #decimal {
 	grid-area: dec;
+	border-bottom: solid 5px rgba(0, 0, 0, 0.541);
 }
+
 #equal {
 	grid-area: equal;
 }
+
 #plus {
 	grid-area: plus;
+	border-bottom: solid 5px rgba(0, 0, 0, 0.541);
 }
+
 #sub {
 	grid-area: minus;
 }
+
 #mul {
 	grid-area: mult;
 }
+
 #divide {
 	grid-area: divide;
+	border-right: solid 5px rgba(0, 0, 0, 0.541);
 }
+
 #sqrt {
 	grid-area: sqrt;
 	border-bottom-right-radius: 1.25rem;
+	border-bottom: solid 5px rgba(0, 0, 0, 0.541);
+	border-right: solid 5px rgba(0, 0, 0, 0.541);
 }
+
 #perc {
 	grid-area: perc;
+	border-right: solid 5px rgba(0, 0, 0, 0.541);
 }
+
 #posNeg {
 	grid-area: posNeg;
+	border-right: solid 5px rgba(0, 0, 0, 0.541);
 }
+
 #clear {
 	grid-area: clear;
 	border-bottom-left-radius: 1.25rem;
+	border-bottom: solid 5px rgba(0, 0, 0, 0.541);
+	border-left: solid 5px rgba(0, 0, 0, 0.541);
 }
 
 .btns {

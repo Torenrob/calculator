@@ -4,7 +4,7 @@ calcMainDisplay = document.getElementById("mainDisplay");
 calcBtns = Array.from(document.getElementsByClassName("btns"));
 
 // Variables
-let entry = "";
+let entry = " ";
 let result = "";
 
 // DOM Manipulation (Listenters & Dynamic Changes)
@@ -21,7 +21,7 @@ calcBtns.forEach((element) => {
 			} else if (/\./.test(usrInput)) {
 				entry += `${usrInput}`;
 				entry = noDblops(entry);
-				console.log("period");
+				entry = oneDecNum(entry);
 			} else {
 				entry += ` ${usrInput}`;
 				entry = noDblops(entry);
@@ -39,6 +39,16 @@ function noDblops(string) {
 	str = string.replaceAll(" ", "");
 	str = str.substring(str.length - 2);
 	if (/[^0-9]{2}/.test(str)) {
+		return string.substring(0, string.length - 1);
+	} else {
+		return string;
+	}
+}
+
+function oneDecNum(string) {
+	let numStrt = string.lastIndexOf(" ");
+	curNumb = string.substring(numStrt + 1, string.length - 2);
+	if (/\./.test(curNumb)) {
 		return string.substring(0, string.length - 1);
 	} else {
 		return string;

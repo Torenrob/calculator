@@ -19,11 +19,15 @@ calcBtns.forEach((element) => {
 			if (/[0-9]/.test(usrInput)) {
 				entry += `${usrInput}`;
 			} else if (/\./.test(usrInput)) {
+				entry += `${usrInput}`;
 				entry = noDblops(entry);
+				console.log("period");
 			} else {
 				entry += ` ${usrInput}`;
 				entry = noDblops(entry);
-				entry += " ";
+				if (/[^0-9\.]/.test(entry[entry.length - 1])) {
+					entry += " ";
+				}
 			}
 		}
 		calcTopDisplay.innerText = `${entry}`;
@@ -34,7 +38,9 @@ calcBtns.forEach((element) => {
 function noDblops(string) {
 	str = string.replaceAll(" ", "");
 	str = str.substring(str.length - 2);
-	if (/[^0-9]{2}/.search(str)) {
-		return string.replace(string.length - 1, "");
+	if (/[^0-9]{2}/.test(str)) {
+		return string.substring(0, string.length - 1);
+	} else {
+		return string;
 	}
 }

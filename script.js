@@ -6,6 +6,7 @@ calcBtns = Array.from(document.getElementsByClassName("btns"));
 // Variables
 let entry = " ";
 let result = "";
+let operInds = [];
 
 // DOM Manipulation (Listenters & Dynamic Changes)
 calcBtns.forEach((element) => {
@@ -23,13 +24,14 @@ calcBtns.forEach((element) => {
 				entry = noDblops(entry);
 				entry = oneDecNum(entry);
 			} else {
-				entry += ` ${usrInput}`;
+				entry += `${usrInput}`;
 				entry = noDblops(entry);
-				if (/[^0-9\.]/.test(entry[entry.length - 1])) {
-					entry += " ";
-				}
 			}
 		}
+		entry = entry.replaceAll(/(?<!\s)[^0-9\.\s](?!\s)/g, (x) => {
+			return ` ${x} `;
+		});
+		console.log(entry);
 		calcTopDisplay.innerText = `${entry}`;
 	});
 });
@@ -54,3 +56,5 @@ function oneDecNum(string) {
 		return string;
 	}
 }
+
+function getEquals(equation) {}

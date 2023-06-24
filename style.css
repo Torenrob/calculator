@@ -65,9 +65,9 @@ body {
 	grid-template-rows: repeat(4, 1fr);
 	grid-template-areas:
 		"c7 c8 c9 equal divide "
-		"c4 c5 c6 mult perc"
-		"c1 c2 c3 minus posNeg"
-		"clear dec c0 plus sqrt";
+		"c4 c5 c6 minus mult"
+		"c1 c2 c3 plus posNeg"
+		"clear dec c0 plus del";
 }
 
 #c0 {
@@ -132,8 +132,9 @@ body {
 	grid-area: minus;
 }
 
-#mul {
+#mult {
 	grid-area: mult;
+	border-right: solid 5px rgba(0, 0, 0, 0.541);
 }
 
 #divide {
@@ -141,16 +142,11 @@ body {
 	border-right: solid 5px rgba(0, 0, 0, 0.541);
 }
 
-#sqrt {
-	grid-area: sqrt;
-	border-bottom-right-radius: 1.25rem;
+#dele {
+	grid-area: del;
 	border-bottom: solid 5px rgba(0, 0, 0, 0.541);
 	border-right: solid 5px rgba(0, 0, 0, 0.541);
-}
-
-#perc {
-	grid-area: perc;
-	border-right: solid 5px rgba(0, 0, 0, 0.541);
+	border-bottom-right-radius: 1.25rem;
 }
 
 #posNeg {

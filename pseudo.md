@@ -1,1 +1,1 @@
-
+eqArr creates list of

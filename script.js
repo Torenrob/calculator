@@ -11,59 +11,66 @@ let equation = "";
 //Global Objects
 const makeMath = {
 	"+": (z, y) => {
-		return z + y;
+		return +z + +y;
 	},
 	"-": (z, y) => {
-		return z - y;
+		return +z - +y;
 	},
 	"÷": (z, y) => {
-		return z / y;
+		return +z / +y;
 	},
 	"×": (z, y) => {
-		return z * y;
+		return +z * +y;
 	},
 };
 
 // DOM Manipulation (Listenters & Dynamic Changes)
 calcBtns.forEach((element) => {
-	element.addEventListener("click", (btn) => {
+	element.addEventListener("click", function btnSelect(btn) {
 		let usrInput = btn.target.innerText;
 
 		if (usrInput == "ce") {
 			entry = "";
+			makeDisplay(entry);
 		} else if (usrInput == "Del") {
 			if (entry[entry.length - 1] == " ") {
 				entry = entry.slice(0, -3);
+				makeDisplay(entry);
 			} else {
 				entry = entry.slice(0, -1);
+				makeDisplay(entry);
 			}
 		} else if (usrInput == "±") {
 			console.log("plus minus sign");
 		} else if (usrInput == "=") {
-			calcMainDisplay.innerText = `${getEquals(equation)}`;
+			makeDisplay(entry, getEquals(entry));
 		} else {
 			if (/[0-9]/.test(usrInput)) {
 				entry += `${usrInput}`;
+				makeDisplay(entry);
 			} else if (/\./.test(usrInput)) {
 				entry += `${usrInput}`;
 				entry = noDblops(entry);
 				entry = oneDecNum(entry);
+				makeDisplay(entry);
 			} else {
 				entry += `${usrInput}`;
 				entry = noDblops(entry);
+				makeDisplay(entry);
 			}
 		}
-
-		entry = entry.replaceAll(/(?<!\s)[^0-9\.\s](?!\s)/g, (oper) => {
-			return ` ${oper} `;
-		});
-
-		equation = entry.replaceAll(" ", "");
-		calcTopDisplay.innerText = `${entry}`;
 	});
 });
 
 // All functions below
+
+function makeDisplay(entry, result = "") {
+	entry = entry.replaceAll(/(?<!\s)[^0-9\.\s](?!\s)/g, (oper) => {
+		return ` ${oper} `;
+	});
+	calcMainDisplay.innerText = result != "" ? result : entry;
+	calcTopDisplay.innerText = result != "" ? entry : result;
+}
 
 // Only one operator at a time
 function noDblops(string) {
@@ -88,24 +95,27 @@ function oneDecNum(string) {
 }
 
 function getEquals(eq) {
-	let eqRegex = /(\d+\.?\d+)([^\d\.])(\d+\.?\d+)/g;
-	eqArr = [];
-	firstNum = undefined;
+	eq = eq.trim().replaceAll(/(?<!\s)[^0-9\.\s](?!\s)/g, (oper) => {
+		return ` ${oper} `;
+	});
+	let eqArr = eq.split(" ");
+	let firstNum = NaN;
 	oper = "";
-	secNum = undefined;
-	sectionResult = undefined;
+	secNum = NaN;
+	sectionResult = NaN;
+
+	Number.prototype.countDecimals = function () {
+		if (Math.floor(this.valueOf()) === this.valueOf()) return 0;
+		return this.toString().split(".")[1].length || 0;
+	};
 
 	do {
-		eqRegex.lastIndex = 0;
-		eqArr = [...eq.matchAll(eqRegex)];
-		firstNum = +eqArr[0][1];
-		oper = eqArr[0][2];
-		secNum = +eqArr[0][3];
+		firstNum = eqArr[0];
+		oper = eqArr[1];
+		secNum = eqArr[2];
 		sectionResult = makeMath[oper](firstNum, secNum);
 
-		eq = eq.replace(eqArr[0][0], sectionResult);
-		eqRegex.lastIndex = 0;
-	} while (eqRegex.test(eq));
-
-	return eq;
+		eqArr.splice(0, 3, sectionResult);
+	} while (eqArr.length > 1);
+	return eqArr[0].countDecimals() > 3 ? eqArr[0].toFixed(3) : eqArr[0];
 }
